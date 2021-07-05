@@ -17,7 +17,6 @@ const getCountriesInform = debounce(event => {
     return;
   }
   fetchCountries(form).then(renderCountries).catch(handleError());
-  console.log(form);
 }, 500);
 
 form.addEventListener('input', getCountriesInform);
@@ -27,7 +26,6 @@ function renderCountries(data) {
   if (ansLength >= 2 && ansLength <= 10) result.innerHTML = listCountries(data);
   if (ansLength === 1) result.innerHTML = oneCountrie(data);
   if (ansLength > 10) moreCounties();
-  console.log(data);
 }
 
 function handleError() {
