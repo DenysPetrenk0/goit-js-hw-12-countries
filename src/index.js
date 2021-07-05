@@ -12,14 +12,11 @@ const result = document.querySelector('.result');
 
 const getCountriesInform = debounce(event => {
   const form = event.target.value;
-  fetchCountries(form)
-    .then(data => {
-      if (data.status === 404) {
-        handleError();
-      }
-      renderCountries(data);
-    })
-    .catch(handleError());
+  result.innerHTML = '';
+  if (!form) {
+    return;
+  }
+  fetchCountries(form).then(renderCountries).catch(handleError());
   console.log(form);
 }, 500);
 
