@@ -16,7 +16,7 @@ const getCountriesInform = debounce(event => {
   if (!form) {
     return;
   }
-  fetchCountries(form).then(renderCountries).catch(handleError());
+  fetchCountries(form).then(renderCountries).catch(handleError);
 }, 500);
 
 form.addEventListener('input', getCountriesInform);
@@ -28,8 +28,8 @@ function renderCountries(data) {
   if (ansLength > 10) moreCounties();
 }
 
-function handleError() {
-  result.innerHTML = '<p class="error">Введите название страны</p>';
+function handleError(message) {
+  result.innerHTML = `<p class="error">${message}</p>`;
 }
 
 function moreCounties() {
